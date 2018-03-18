@@ -51,10 +51,10 @@ public  class single extends CommunityMember {
     }
 
     @Override
-    public float SumHoursVolunteeringRecommended(CommunityMember cm) {
-        if(cm.getSumHoursTorah()>=84)
+    public float SumHoursVolunteeringRecommended() {
+        if(getSumHoursTorah()>=84)
             return 2;
-        else if(cm.getSumHoursTorah()>=56)
+        else if(getSumHoursTorah()>=56)
             return 4;
         return 6;
     }

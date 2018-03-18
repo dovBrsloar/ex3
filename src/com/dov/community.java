@@ -1,8 +1,7 @@
 package com.dov;
 import sun.security.util.Length;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class community {
     List<CommunityMember> cm;
@@ -27,19 +26,47 @@ public class community {
         }
         return sum;
     }
-    public int sumGemach(CommunityMember member)
+    public int sumGemach(int id)
     {
-        int sum =0;
-        sum=member.MaxLoan();
-        return sum;
-    }
-    public List<Float> sumVoluteering()
-    {
-        List<Float> sv;
-        for(CommunityMember member : getCommunityMember())
+        for(CommunityMember member : cm)
         {
-            if(member.typeVolunteering == TypeVolunteering.spiritually)
+            if(member.getId() == id){
+                return member.MaxLoan();
+            }
         }
+        return -1;
+    }
+    public String sumVoluteering()
+    {
+        String sumVo1="spiritually \n";
+        String sumVo2="physically \n";
+        String sumVo3="musical \n";
+        String sumVoluteering="";
+        for(CommunityMember member : getCommunityMember()) {
+            if(member.getTypeVolunteering() == TypeVolunteering.spiritually) {
+                sumVo1 += member.getId();
+                sumVo1 += member.SumHoursVolunteeringRecommended();
+                sumVo1 += "\n";
+            }
+            if(member.getTypeVolunteering() == TypeVolunteering.physically) {
+                sumVo2 += member.getId();
+                sumVo2 += member.SumHoursVolunteeringRecommended();
+                sumVo2 += "\n";
+            }
+            if(member.getTypeVolunteering() == TypeVolunteering.musical) {
+                sumVo3 += member.getId();
+                sumVo3 += member.SumHoursVolunteeringRecommended();
+                sumVo3 += "\n";
+            }
 
+
+        }
+        sumVoluteering+=sumVo1;
+        sumVoluteering+="\n";
+        sumVoluteering+=sumVo2;
+        sumVoluteering+="\n";
+        sumVoluteering+=sumVo3;
+        sumVoluteering+="\n";
+        return sumVoluteering;
     }
 }
